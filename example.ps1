@@ -14,13 +14,14 @@ function Get-Data {
     }
     else {
         Invoke-Command -ComputerName $ComputerName -ScriptBlock {
+            $ComputerInfo = Get-ComputerInfo
             [PSCustomObject]@{
                 Name = $Env:COMPUTERNAME
-                OS = (Get-ComputerInfo).OSName
+                OS = $ComputerInfo.OSName
                 IPAddress = (Get-NetIPAddress -AddressFamily IPv4 -InterfaceAlias 'Ethernet').IPAddress
-                Domain = (Get-ComputerInfo).CsDomain
-                Model = (Get-ComputerInfo).Model
-                Manufacturer = (Get-ComputerInfo).Manufacturer
+                Domain = $ComputerInfo.CsDomain
+                Model = $ComputerInfo.Model
+                Manufacturer = $ComputerInfo.Manufacturer
             }
         }
     }
