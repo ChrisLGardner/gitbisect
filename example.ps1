@@ -1,8 +1,8 @@
 function Get-Data {
     param (
-        $ComputerName = $Env:COMPUTERNAME
+        $ServerName = $Env:COMPUTERNAME
     )
-    if ($ComputerName -eq $Env:COMPUTERNAME) {
+    if ($ServerName -eq $Env:COMPUTERNAME) {
         [PSCustomObject]@{
             Name = $Env:COMPUTERNAME
             OS = (Get-ComputerInfo).OSName
