@@ -1,6 +1,7 @@
 function Get-Data {
     param (
-        $ServerName = $Env:COMPUTERNAME
+        $ServerName = $Env:COMPUTERNAME,
+        $Username = 'test'
     )
     if ($ServerName -eq $Env:COMPUTERNAME) {
         $ComputerInfo = Get-ComputerInfo
